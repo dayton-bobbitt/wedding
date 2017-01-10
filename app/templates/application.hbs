@@ -1,13 +1,15 @@
-<div class='container'>
+<div id='header' class='container-fluid'>
     <div class='row'>
-        <div class='header col-md-8'>
-            
+        <div class='header-img col-md-8'>
+            <img src='assets/images/header-img.jpg' alt='Dayton and Laura'>
         </div>
         <div class='wedding-info col-md-4'>
             Join us in {{days-remaining}} days on September 2nd, 2017!
         </div>
     </div>
-    <div class='links'>
+</div>
+<div class='container'>
+    <nav class='links'>
         {{#link-to 'our-story'}}
             Our Story
         {{/link-to}}
@@ -17,7 +19,7 @@
         {{#link-to 'travel-info'}}
             Travel Information
         {{/link-to}}
-    </div>
+    </nav>
     <div class='body'>
         {{outlet}}
     </div>
