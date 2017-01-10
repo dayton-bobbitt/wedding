@@ -13,7 +13,7 @@ test('should redirect to our-story route', function(assert) {
 test('should include common header', function(assert) {
   visit('/');
   andThen(() => {
-    assert.equal(exists('.header'), true, 'should show the header');
+    assert.equal(exists('#header'), true, 'should show the header');
   });
 });
 
@@ -52,6 +52,13 @@ test('should have a title', function(assert) {
   visit('/');
   andThen(() => {
     assert.equal(exists('.body .title'), true, 'should have a title element');
+  });
+});
+
+test('should have a title of Our Story', function(assert) {
+  visit('/');
+  andThen(() => {
+    assert.equal(find('.title').text(), 'Our Story', 'should have title Our Story');
   });
 });
 

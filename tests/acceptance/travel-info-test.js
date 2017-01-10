@@ -14,7 +14,7 @@ test('visiting /travel-info', function(assert) {
 test('should include common header', function(assert) {
   visit('/travel-info');
   andThen(() => {
-    assert.equal(exists('.header'), true, 'should show the header');
+    assert.equal(exists('#header'), true, 'should show the header');
   });
 });
 
@@ -56,10 +56,10 @@ test('should have a title', function(assert) {
   });
 });
 
-test('should have a title of Registry', function(assert) {
+test('should have a title of Travel Information', function(assert) {
   visit('/travel-info');
   andThen(() => {
-    assert.equal(find('.title').text(), 'Travel Information', 'should have title Registry');
+    assert.equal(find('.title').text(), 'Travel Information', 'should have title Travel Information');
   });
 });
 

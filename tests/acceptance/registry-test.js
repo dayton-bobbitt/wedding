@@ -14,7 +14,7 @@ test('visiting /registry', function(assert) {
 test('should include common header', function(assert) {
   visit('/registry');
   andThen(() => {
-    assert.equal(exists('.header'), true, 'should show the header');
+    assert.equal(exists('#header'), true, 'should show the header');
   });
 });
 
