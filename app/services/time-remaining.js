@@ -14,10 +14,12 @@ export default Ember.Service.extend({
     minutes: null,
     hours: null,
     days: null,
+    inPast: null,
 
     init() {
         this._super(...arguments);
         this.setTimeRemaining();
+        this.set('inPast', this.get('days') < 0);
         this.startCountdown();
     },
 
@@ -38,7 +40,7 @@ export default Ember.Service.extend({
     },
 
     startCountdown() {
-        setInterval(() => {
+        setTimeout(() => {
             this.decrementSeconds();
         }, 1000);
     },
@@ -52,6 +54,12 @@ export default Ember.Service.extend({
         }
 
         this.set('seconds', seconds);
+
+        if (!this.get('inPast')) {
+            Ember.run.later(() => {
+                this.decrementSeconds();
+            }, 1000);
+        }
     },
 
     decrementMinutes() {
@@ -79,5 +87,6 @@ export default Ember.Service.extend({
     decrementDays() {
         let days = this.get('days');
         this.set('days', --days);
+        this.set('inPast', days < 0);
     }
 });

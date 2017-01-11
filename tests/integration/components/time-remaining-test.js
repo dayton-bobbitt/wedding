@@ -7,6 +7,5 @@ moduleForComponent('time-remaining', 'Integration | Component | time remaining',
 
 test('it renders', function(assert) {
   this.render(hbs`{{time-remaining}}`);
-
   assert.ok(this.$());
 });
