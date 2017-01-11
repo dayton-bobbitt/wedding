@@ -1,6 +1,6 @@
-{{#unless inPast timeRemaining}}
-    {{timeRemaining.days}} days <br>
-    {{timeRemaining.hours}} hours <br>
-    {{timeRemaining.minutes}} minutes <br>
-    {{timeRemaining.seconds}} seconds
+{{#unless timeRemaining.inPast}}
+    {{time-interval interval='days' remaining=timeRemaining.days}}
+    {{time-interval interval='hours' remaining=timeRemaining.hours}}
+    {{time-interval interval='minutes' remaining=timeRemaining.minutes}}
+    {{time-interval interval='seconds' remaining=timeRemaining.seconds}}
 {{/unless}}
