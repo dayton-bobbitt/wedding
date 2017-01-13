@@ -1,4 +1,9 @@
-@import 'bootstrap';
+@import 'ember-bootstrap-sass';
+
+@mixin cover {
+    object-fit: cover;
+    -o-object-fit: cover;
+}
 
 #header {
     padding: 0;
@@ -6,12 +11,7 @@
     img {
         width: 100%;
         height: 50vh;
-        .cover;
+        @include cover;
         object-position: center 80%;
     }
-}
-
-.cover {
-    object-fit: cover;
-    -o-object-fit: cover;
 }
