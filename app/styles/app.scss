@@ -16,6 +16,12 @@ $medium: 800px;
     padding: 0;
 }
 
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 1.5em;
+    line-height: 2em;
+}
+
 // Rules
 header.main {
     figure.no-padding {
@@ -40,6 +46,22 @@ main {
     header {
         h2.rsvp-success {
             color: $lightGreen;
+        }
+    }
+
+    .our-story {
+        p {
+            margin-bottom: 1em;
+        }
+
+        .time-remaining {
+            div {
+                display: inline-block;
+            }
+
+            .remaining-label {
+                color: $lightGreen;
+            }
         }
     }
 }
