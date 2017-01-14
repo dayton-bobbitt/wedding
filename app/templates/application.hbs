@@ -1,15 +1,21 @@
-<div id='header' class='container-fluid'>
+<header class='main container-fluid'>
     <div class='row'>
-        <div class='header-img col-md-8'>
+        <figure class='col-md-8 no-padding'>
             <img src='assets/images/header-img.jpg' alt='Dayton and Laura'>
-        </div>
-        <div class='wedding-info col-md-4'>
-            <span>Join us</span>
-            <span>September 2nd, 2017</span>
-            {{time-remaining}}
-        </div>
+        </figure>
+
+        <article class='wedding-info col-md-4'>
+            <header>
+                <span>Join us</span>
+                <span>September 2nd, 2017</span>
+            </header>
+            <div class='time-remaining'>
+                {{time-remaining}}
+            </div>
+        </article>
     </div>
-</div>
+</header>
+
 <div class='container'>
     <nav class='links'>
         {{#link-to 'our-story'}}
@@ -21,8 +27,12 @@
         {{#link-to 'travel-info'}}
             Travel Information
         {{/link-to}}
+        {{#link-to 'rsvp'}}
+            RSVP
+        {{/link-to}}
     </nav>
-    <div class='body'>
+
+    <main>
         {{outlet}}
-    </div>
+    </main>
 </div>
