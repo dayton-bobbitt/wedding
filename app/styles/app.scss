@@ -3,6 +3,9 @@
 // Application colors
 $lightGreen: #61CF3D;
 
+// Sizes
+$medium: 800px;
+
 // Mixins
 @mixin cover {
     object-fit: cover;
@@ -25,6 +28,10 @@ header.main {
             height: 50vh;
             @include cover;
             object-position: center 80%;
+
+            @media all and (min-width: $medium) {
+                object-position: center 55%;
+            }
         }
     }
 }
