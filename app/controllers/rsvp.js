@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
                     model.save();
                 }
             }).catch(() => {
-                console.log('Something went wrong... ¯\_(ツ)_/¯');
+                console.log('Something went wrong... ¯\\_(ツ)_/¯');
             });
         }
     }
