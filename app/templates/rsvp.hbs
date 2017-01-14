@@ -1,0 +1,12 @@
+<section>
+    {{#if model.hasRsvp}}
+         <h2>You have already RSVP'd!</h2>  
+    {{else}}
+        <header>
+            <h2>Let us know you're coming</h2>
+        </header>
+
+        {{input type='text' value=model.address placeholder='Please RSVP using your address' enter=(action 'pushModel' model)}}
+        <button class='btn-success' {{action 'pushModel' model}}>RSVP</button>
+    {{/if}}
+</section>

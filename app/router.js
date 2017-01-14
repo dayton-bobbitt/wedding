@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('our-story');
   this.route('registry');
   this.route('travel-info');
+  this.route('rsvp');
 });
 
 export default Router;
