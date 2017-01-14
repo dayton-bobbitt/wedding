@@ -1,5 +1,9 @@
 @import 'ember-bootstrap-sass';
 
+// Application colors
+$lightGreen: #61CF3D;
+
+// Mixins
 @mixin cover {
     object-fit: cover;
     -o-object-fit: cover;
@@ -9,8 +13,11 @@
     padding: 0;
 }
 
+// Rules
 header.main {
     figure.no-padding {
+
+        // Remove padding caused by bootstrap col-md
         @include no-padding;
 
         img {
@@ -18,6 +25,14 @@ header.main {
             height: 50vh;
             @include cover;
             object-position: center 80%;
+        }
+    }
+}
+
+main {
+    header {
+        h2.rsvp-success {
+            color: $lightGreen;
         }
     }
 }
