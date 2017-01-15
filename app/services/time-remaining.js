@@ -7,7 +7,7 @@ const timeInMs = {
     day: 86400000
 };
 
-const weddingDate = new Date(2017, 8, 2, 18);
+const weddingDate = new Date(2017, 8, 2, 19);
 
 export default Ember.Service.extend({
     seconds: null,
