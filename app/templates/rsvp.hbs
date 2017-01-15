@@ -1,14 +1,17 @@
-<section>
+{{#main-content title='RSVP'}}
     {{#if model.hasRsvp}}
-        <header>
-            <h2 class='rsvp-success'>You are RSVP'd :)</h2>  
-        </header>
+        <h2 class='rsvp-success'>You are RSVP'd :)</h2>
     {{else}}
-        <header>
-            <h2>Let us know you're coming</h2>
-        </header>
+        <div class='rsvp-form'>
+            {{input type='text' class='form-control' value=model.firstName placeholder='First name' key-press=(action resetIsNotFound model)}}
+            {{input type='text' class='form-control' value=model.lastName placeholder='Last name' key-press=(action resetIsNotFound model)}}
+            <button type='button' class='btn btn-success' {{action 'pushModel' model}}>Find your invitation</button>
 
-        {{input type='text' value=model.address placeholder='Please RSVP using your address' enter=(action 'pushModel' model)}}
-        <button class='btn-success' {{action 'pushModel' model}}>RSVP</button>
+            <div>
+                {{#if model.isNotFound}}
+                    Oops...it looks like we couldn't find your invitation
+                {{/if}}
+            </div>
+        </div>
     {{/if}}
-</section>
+{{/main-content}}

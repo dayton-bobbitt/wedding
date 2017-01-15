@@ -4,12 +4,12 @@ export default Ember.Route.extend({
     model() {
         const store = this.get('store');
 
-        let address = store.peekRecord('address', 1);
+        let guest = store.peekRecord('guest', 1);
 
-        if (!address) {
-            address = store.createRecord('address');
+        if (!guest) {
+            guest = store.createRecord('guest');
         }
 
-        return address;
+        return guest;
     }
 });
