@@ -1,6 +1,9 @@
 {{#unless timeRemaining.inPast}}
-    {{time-interval interval='days' remaining=timeRemaining.days}}
-    {{time-interval interval='hours' remaining=timeRemaining.hours}}
-    {{time-interval interval='minutes' remaining=timeRemaining.minutes}}
-    {{time-interval interval='seconds' remaining=timeRemaining.seconds}}
+    in
+    <div class='time-remaining'>
+        {{time-interval interval='days' remaining=timeRemaining.days}},
+        {{time-interval interval='hours' remaining=timeRemaining.hours}},
+        {{time-interval interval='minutes' remaining=timeRemaining.minutes}} and
+        {{time-interval interval='seconds' remaining=timeRemaining.seconds}}
+    </div>
 {{/unless}}

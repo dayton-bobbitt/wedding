@@ -16,6 +16,10 @@ $medium: 800px;
     padding: 0;
 }
 
+@mixin no-margin {
+    margin: 0;
+}
+
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 1.5em;
@@ -54,14 +58,12 @@ main {
             margin-bottom: 1em;
         }
 
-        .time-remaining {
-            div {
-                display: inline-block;
-            }
+        div, span {
+            display: inline;
+        }
 
-            .remaining-label {
-                color: $lightGreen;
-            }
+        .time-remaining {
+            font-family: "Courier New", Courier, monospace;
         }
     }
 }
