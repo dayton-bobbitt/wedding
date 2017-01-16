@@ -3,6 +3,9 @@
 
 // Application colors
 $lightGreen: #61CF3D;
+$lightGray: #e0e0e0;
+$gray: #909090;
+$darkGray: #707070;
 
 // Sizes
 $medium: 800px;
@@ -86,6 +89,30 @@ main {
             @media screen and (-webkit-min-device-pixel-ratio:0) { 
                 font-size: 16px;
             }
+        }
+    }
+}
+
+.links {
+    text-align: center;
+    border-bottom: 1px solid $lightGray;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.5em;
+        color: $gray;
+
+        &.active {
+            color: black;
+        }
+
+        &:hover:not(.active) {
+            color: $darkGray;
+        }
+
+        &:not(:last-child) {
+            margin-right: 1em;
         }
     }
 }
