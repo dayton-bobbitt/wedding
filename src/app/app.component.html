@@ -1,0 +1,26 @@
+<header class='main container-fluid'>
+  <div class='row'>
+    <figure class='col-md-12 no-padding'>
+      <img src='assets/images/header-img.jpg' alt='Dayton and Laura'>
+    </figure>
+  </div>
+</header>
+
+<div class='container-fluid'>
+  <div class='row'>
+    <nav class='links'>
+      <a routerLink="/our-story" routerLinkActive="active">Our Story</a>
+      <a routerLink="/registry" routerLinkActive="active">Registry</a>
+      <a routerLink="/travel-info" routerLinkActive="active">Travel Information</a>
+      <a routerLink="/rsvp" routerLinkActive="active">RSVP</a>
+    </nav>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='col-md-offset-3 col-md-6'>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

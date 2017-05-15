@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Italianno|Sacramento');
+
+// Application colors
+$lightGreen: #61CF3D;
+$lightGray: #e0e0e0;
+$gray: #909090;
+$darkGray: #707070;
+
+// Sizes
+$medium: 800px;
+
+// Mixins
+@mixin cover {
+    object-fit: cover;
+    -o-object-fit: cover;
+}
+
+@mixin no-padding {
+    padding: 0;
+}
+
+@mixin no-margin {
+    margin: 0;
+}
+
+// fonts
+$cursive: "Dancing Script";
+$sans-serif: "Trebuchet MS", Helvetica, sans-serif;
+$monospace: "Courier New", Courier, monospace;
+
+body {
+    font-family: $sans-serif;
+    font-size: 1.5em;
+    line-height: 2em;
+}
+
+// Rules
+header.main {
+    figure.no-padding {
+
+        // Remove padding caused by bootstrap col-md
+        @include no-padding;
+
+        img {
+            width: 100%;
+            height: 50vh;
+            @include cover;
+            object-position: center 80%;
+
+            @media all and (min-width: $medium), (orientation: landscape) {
+                object-position: center 55%;
+            }
+        }
+    }
+}
+
+main {
+    header {
+        h2, h3 {
+            font-family: $cursive, $sans-serif;
+        }
+
+        .rsvp-success {
+            color: $lightGreen;
+        }
+    }
+
+    .our-story {
+        p {
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+
+        div, span {
+            display: inline;
+        }
+
+        .time-remaining {
+            font-family: $monospace;
+        }
+    }
+
+    .rsvp-form {
+        input {
+            margin-bottom: 1em;
+
+            // Don't zoom on input
+            @media screen and (-webkit-min-device-pixel-ratio:0) { 
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.links {
+    text-align: center;
+    border-bottom: 1px solid $lightGray;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.5em;
+        color: $gray;
+
+        &.active {
+            color: black;
+        }
+
+        &:hover:not(.active) {
+            color: $darkGray;
+        }
+
+        &:not(:last-child) {
+            margin-right: 1em;
+        }
+    }
+}
+
+.stores {
+    margin-bottom: 2em;
+
+    figure {
+        margin-top: 1em;
+
+        img {
+            position: relative;
+            max-width: 100%;
+        }
+    }
+}
