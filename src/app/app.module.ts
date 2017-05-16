@@ -10,8 +10,10 @@ import { BasePageComponent } from './base-page/base-page.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { RegistryComponent } from './registry/registry.component';
 import { TravelInfoComponent } from './travel-info/travel-info.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
+  { path: '', component: LandingPageComponent },
   { path: 'our-story', component: OurStoryComponent },
   { path: 'registry', component: RegistryComponent },
   { path: 'travel-info', component: TravelInfoComponent },
@@ -25,7 +27,8 @@ const routes: Routes = [
     BasePageComponent,
     RsvpComponent,
     RegistryComponent,
-    TravelInfoComponent
+    TravelInfoComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
