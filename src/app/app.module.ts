@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { OurStoryComponent } from './our-story/our-story.component';
+import { BasePageComponent } from './base-page/base-page.component';
 
 const routes: Routes = [
   { path: 'our-story', component: OurStoryComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    OurStoryComponent
+    OurStoryComponent,
+    BasePageComponent
   ],
   imports: [
     BrowserModule,
