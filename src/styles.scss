@@ -132,7 +132,6 @@ main {
 }
 
 .landing-page {
-    position: relative;
     background-color: #144363;
 
     .landing-photo {
@@ -145,14 +144,18 @@ main {
     }
 
     .welcome-msg {
-        position: relative;
+        display:flex;
+        flex:1;
+        min-height:100vh;
+        align-items: center;
+        justify-content: center;
         text-align: center;
 
         .welcome {
             font-family: $cursive;
             font-size: 3em;
             color: $lightGray;
-            margin: 2em 0 1em 0;
+            margin-bottom: 1em;
         }
 
         .msg {
@@ -168,8 +171,6 @@ main {
                 width: 85%;
                 margin-bottom: 1em;
             }
-
-            margin-bottom: 4em;
         }
     }
 }
