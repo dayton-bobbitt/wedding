@@ -11,14 +11,20 @@
               Welcome!
             </div>
             <div class="msg">
-              Thank you for visiting our wedding webiste! In order to see all
-              the details of our wedding, please enter the event code found on your invitation.
-              If you do not enter an event code, some of the information will be hidden.
+              Thank you for visiting our wedding webiste! 
+              <span *ngIf="!isAuthorized">In order to see all the details of our wedding, please enter the 
+                event code found on your invitation. If you do not enter an event code, 
+                some of the information will be hidden.
+              </span>
+              <span *ngIf="isAuthorized">You have already entered a valid event code.</span>
             </div>
-            <div class="event-code-form">
-              <input type="text" class="form-control" placeholder="Event code">
-              <button type="button" class="btn btn-success">Continue</button>
+            <div *ngIf="!isAuthorized" class="event-code-form">
+              <input #eventKey type="text" class="form-control" placeholder="Event code" (keyup.enter)="validateGuest(eventKey.value)">
+              <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Continue</button>
               <button routerLink="/our-story" routerLinkActive="active" type="button" class="btn btn-danger">Continue without event code</button>
+            </div>
+            <div *ngIf="isAuthorized" class="event-code-form">
+              <button type="button" class="btn btn-success" (click)="validateGuest()">Continue</button>
             </div>
           </div>
         </div>
