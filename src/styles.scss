@@ -36,6 +36,19 @@ body {
     margin: 0;
 }
 
+input {
+    margin-bottom: 1em;
+
+    // Don't zoom on input
+    @media screen and (-webkit-min-device-pixel-ratio:0) { 
+        font-size: 16px;
+    }
+}
+
+.base-page {
+    margin-bottom: 6em;
+}
+
 // Rules
 header.main {
     figure.no-padding {
@@ -79,17 +92,6 @@ main {
 
         .time-remaining {
             font-family: $monospace;
-        }
-    }
-
-    .rsvp-form {
-        input {
-            margin-bottom: 1em;
-
-            // Don't zoom on input
-            @media screen and (-webkit-min-device-pixel-ratio:0) { 
-                font-size: 16px;
-            }
         }
     }
 }
@@ -168,8 +170,8 @@ main {
         .event-code-form {
             input {
                 margin: auto;
-                width: 85%;
                 margin-bottom: 1em;
+                width: 85%;
             }
         }
     }

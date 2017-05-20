@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,25 +15,28 @@ export class LandingPageComponent implements OnInit {
   constructor(private http: Http, private router: Router) { }
 
   ngOnInit() {
-    this.isGuestValid().then(() => {
+    this.isGuestValid().subscribe((res) => {
       this.isAuthorized = true
-    }).catch((error) => console.log('Guest not authorized'));
+    }, (err) => console.log('Guest not authorized'));
   }
 
   private validateGuest(eventKey: string) {
     const headers = new Headers();
     headers.set('eventkey', eventKey);
 
-    this.isGuestValid(headers)
-    .then(() => this.router.navigateByUrl('/our-story'))
-    .catch((err) => alert('Invalid event code'));
+    this.isGuestValid(headers).subscribe((res) => {
+      this.router.navigateByUrl('/our-story');
+    }, (err) => {
+      alert('Invalid event code')
+    });
   }
 
-  private isGuestValid(headers?: Headers) {
+  private isGuestValid(headers?: Headers): Observable<any> {
     const options = new RequestOptions({ headers, withCredentials: true });
-    const url = 'http://localhost:3000/api/guest/validate';
-    return new Promise((resolve, reject) => {
-      this.http.get(url, options).subscribe(res => resolve(res), err => reject(err));
+    const url = `${environment.apiUrl}/${environment.validateUri}`;
+
+    return new Observable((observer) => {
+      this.http.get(url, options).subscribe(res => observer.next(res), err => observer.error(err));
     });
   }
 
