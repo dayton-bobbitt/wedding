@@ -6,8 +6,8 @@
       In order to see the details of our wedding and to RSVP, please enter the 
       event code found on your invitation.
     </p>
-    <input type="text" class="form-control" placeholder="Please enter the event code on the details card">
-    <button type="button" class="btn btn-success">Submit</button>
+    <input #eventKey type="text" class="form-control" placeholder="Please enter the event code on the details card" (keyup.enter)="validateGuest(eventKey.value)">
+    <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Submit</button>
   </div>
 
   <div *ngIf="isAuthorized" class="rsvp-form">
