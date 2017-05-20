@@ -1,6 +1,4 @@
 <base-page title="RSVP">
-  <p *ngIf="details">{{details}}</p>
-
   <div *ngIf="!isAuthorized" class="rsvp-validation-form">
     <p>
       In order to see the details of our wedding and to RSVP, please enter the 
@@ -10,6 +8,14 @@
     <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Submit</button>
   </div>
 
+  <div *ngIf="details">
+    <p>{{details.msg}}</p>
+    <hr>
+    <p>
+      When: <span class="wedding-details">{{details.when}}</span><br>
+      Where: <span class="wedding-details">{{details.where}}</span>
+    </p>
+  </div>
   <div *ngIf="isAuthorized" class="rsvp-form">
     <input type="text" class="form-control" placeholder="Please enter your address as shown on the invitation">
     <button type="button" class="btn btn-success">Find your invitation</button>
