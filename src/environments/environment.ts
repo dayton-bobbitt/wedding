@@ -7,5 +7,6 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000',
   validateUri: 'api/guest/validate',
+  isRsvpUri: 'api/guest/check/rsvp',
   rsvpUri: 'api/guest/rsvp'
 };

@@ -180,3 +180,22 @@ main {
         }
     }
 }
+
+.guest-name {
+    font-family: $cursive;
+}
+
+#num-attending-input {
+    max-width: 48px;
+    text-align: center;
+}
+
+.rsvp-form {
+    label {
+        font-weight: normal;
+    }
+}
+
+.text--red {
+    color: red;
+}

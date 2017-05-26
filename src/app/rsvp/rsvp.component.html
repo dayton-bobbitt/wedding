@@ -1,23 +1,67 @@
 <base-page title="RSVP">
-  <div *ngIf="!isAuthorized" class="rsvp-validation-form">
-    <p>
-      In order to see the details of our wedding and to RSVP, please enter the 
-      event code found on your invitation.
-    </p>
-    <input #eventKey type="text" class="form-control" placeholder="Please enter the event code on the details card" (keyup.enter)="validateGuest(eventKey.value)">
-    <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Submit</button>
-  </div>
+  <div *ngIf="!isRsvpComplete">
+    <div *ngIf="!isAuthorized" class="rsvp-validation-form">
+      <p>
+        In order to see the details of our wedding and to RSVP, please enter the 
+        event code found on your invitation.
+      </p>
+      <input #eventKey type="text" class="form-control" placeholder="Please enter the event code on the details card" (keyup.enter)="validateGuest(eventKey.value)">
+      <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Submit</button>
+    </div>
 
-  <div *ngIf="details">
-    <p>{{details.msg}}</p>
-    <hr>
-    <p>
-      When: <span class="wedding-details">{{details.when}}</span><br>
-      Where: <span class="wedding-details">{{details.where}}</span>
-    </p>
+    <div *ngIf="details">
+      <p>{{details.msg}}</p>
+      <hr>
+      <p>
+        When: <span class="wedding-details">{{details.when}}</span><br>
+        Where: <span class="wedding-details">{{details.where}}</span>
+      </p>
+      <p *ngIf="showSearchForm()">
+        To RSVP, please enter your last name and the first line of your address as it appears on your invitation.
+      </p>
+    </div>
+    <div *ngIf="showSearchForm()" class="rsvp-form">
+      <input #lastName type="text" class="form-control" placeholder="Last name">
+      <input #address type="text" class="form-control" placeholder="First line of address" (keyup.enter)="findRsvp(lastName.value, address.value)">
+      <button type="button" class="btn btn-success" (click)="findRsvp(lastName.value, address.value)">Find your invitation</button>
+    </div>
+    <div *ngIf="rsvpSearchInitiated">
+      <div *ngIf="isRsvpFound">
+        <hr>
+        <h3 class="guest-name">{{rsvpDetails.label}}</h3>
+        <div>
+          <label for="attending">Will you be able to attend?</label>
+          <input type="radio" name="attending" (click)="setAttending(true)"> Yes 
+          <input type="radio" name="attending" (click)="setAttending(false)"> No
+        </div>
+        <div *ngIf="guestAnsweredAttending()">
+          <div *ngIf="isAttending">
+            <label for="num-attending-input">How many will be attending?</label>
+            <input #numAttendingInput type="number" id="num-attending-input" value="1" min="1" max="{{rsvpDetails.maxAttending}}" (change)="setNumAttending(numAttendingInput.value)"> of {{rsvpDetails.maxAttending}}
+            <p class="text--red" *ngIf="invalidNumAttending">Please enter a number larger than 0 and no greater than {{rsvpDetails.maxAttending}}</p>
+          </div>
+          <div *ngIf="!isAttending">
+            <p>You will be missed!</p>
+          </div>
+          <button type="button" class="btn btn-success" (click)="submitRSVP()">Submit</button>
+          <p *ngIf="rsvpSumitError">
+            Uhh oh. It looks like we are having trouble accepting your RSVP.
+            If the problem persists, please contact me at <a href="mailto:{{contactEmail}}?Subject=RSVP%20form%20not%20working" target="_top">{{contactEmail}}</a>
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!isRsvpFound">
+        <hr>
+        <p>Oops! We couldn't find your invitation.
+          Please make sure to enter the first line of your address exactly as it appears on the invitation.
+          If you continue to have this problem, please contact me at <a href="mailto:{{contactEmail}}?Subject=RSVP%20form%20not%20working" target="_top">{{contactEmail}}</a></p>
+      </div>
+    </div>
   </div>
-  <div *ngIf="isAuthorized" class="rsvp-form">
-    <input type="text" class="form-control" placeholder="Please enter your address as shown on the invitation">
-    <button type="button" class="btn btn-success">Find your invitation</button>
+  <div *ngIf="isRsvpComplete">
+    <p>
+      Thank you for submitting your RSVP!
+    </p>
+    <button type="button" class="btn btn-success" (click)="editRSVP()">Edit Your RSVP</button>
   </div>
 </base-page>
