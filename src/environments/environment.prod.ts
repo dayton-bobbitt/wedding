@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'http://daytonandlaura.us:8080',
   validateUri: 'api/guest/validate',
+  isRsvpUri: 'api/guest/check/rsvp',
   rsvpUri: 'api/guest/rsvp'
 };
