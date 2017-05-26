@@ -12,12 +12,12 @@ const timeInMs = {
   templateUrl: './our-story.component.html'
 })
 export class OurStoryComponent implements OnInit {
-  private weddingDate = new Date(2017, 8, 2, 19);
-  private days: number;
-  private hours: number;
-  private minutes: number;
-  private seconds: number;
-  private isInPast: boolean;
+  weddingDate = new Date(2017, 8, 2, 19);
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isInPast: boolean;
 
   constructor() { }
 

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-  private isAuthorized = false;
+  isAuthorized = false;
 
   constructor(private http: Http, private router: Router) { }
 
@@ -20,7 +20,7 @@ export class LandingPageComponent implements OnInit {
     }, (err) => console.log('Guest not authorized'));
   }
 
-  private validateGuest(eventKey: string) {
+  validateGuest(eventKey: string) {
     const headers = new Headers();
     headers.set('eventkey', eventKey);
 
@@ -31,7 +31,7 @@ export class LandingPageComponent implements OnInit {
     });
   }
 
-  private isGuestValid(headers?: Headers): Observable<any> {
+  isGuestValid(headers?: Headers): Observable<any> {
     const options = new RequestOptions({ headers, withCredentials: true });
     const url = `${environment.apiUrl}/${environment.validateUri}`;
 

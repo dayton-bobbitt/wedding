@@ -9,19 +9,19 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./rsvp.component.scss']
 })
 export class RsvpComponent implements OnInit {
-  private details: string;
-  private contactEmail: string;
-  private isAuthorized = false;
-  private isAttending: boolean;
-  private numAttending = 1;
-  private invalidNumAttending = false;
-  private rsvpSearchInitiated = false;
-  private isRsvpFound = false;
-  private guestIsRsvp = false;
-  private isRsvpComplete = false;
-  private isUpdatingRsvp = false;
-  private rsvpSubmitError = false;
-  private rsvpDetails;
+  details: string;
+  contactEmail: string;
+  isAuthorized = false;
+  isAttending: boolean;
+  numAttending = 1;
+  invalidNumAttending = false;
+  rsvpSearchInitiated = false;
+  isRsvpFound = false;
+  guestIsRsvp = false;
+  isRsvpComplete = false;
+  isUpdatingRsvp = false;
+  rsvpSubmitError = false;
+  rsvpDetails;
 
   constructor(private http: Http) {
   }
@@ -31,7 +31,7 @@ export class RsvpComponent implements OnInit {
     this.getGuestRsvp();
   }
 
-  private validateGuest(eventKey: string) {
+  validateGuest(eventKey: string) {
     const headers = new Headers();
     headers.set('eventkey', eventKey);
 
@@ -40,7 +40,7 @@ export class RsvpComponent implements OnInit {
     });
   }
 
-  private getDetailsMessage(headers?: Headers): Observable<any> {
+  getDetailsMessage(headers?: Headers): Observable<any> {
     const options = new RequestOptions({ headers, withCredentials: true });
     const url = `${environment.apiUrl}/${environment.validateUri}`;
 
@@ -58,7 +58,7 @@ export class RsvpComponent implements OnInit {
     });
   }
 
-  private getGuestRsvp() {
+  getGuestRsvp() {
     const options = new RequestOptions({ withCredentials: true });
     const url = `${environment.apiUrl}/${environment.isRsvpUri}`;
     
@@ -76,7 +76,7 @@ export class RsvpComponent implements OnInit {
     });
   }
 
-  private findRsvp(lastName: string, address: string) {
+  findRsvp(lastName: string, address: string) {
     this.rsvpSearchInitiated = true;
 
     const headers = new Headers();
@@ -94,15 +94,15 @@ export class RsvpComponent implements OnInit {
     });
   }
 
-  private guestAnsweredAttending() {
+  guestAnsweredAttending() {
     return typeof this.isAttending !== 'undefined';
   }
 
-  private setAttending(isAttending: boolean) {
+  setAttending(isAttending: boolean) {
     this.isAttending = isAttending;
   }
 
-  private setNumAttending(numAttending: number) {
+  setNumAttending(numAttending: number) {
     if (numAttending > 0 && numAttending <= this.rsvpDetails.maxAttending) {
       this.numAttending = numAttending;
       this.invalidNumAttending = false;
@@ -111,7 +111,7 @@ export class RsvpComponent implements OnInit {
     }
   }
 
-  private submitRSVP() {
+  submitRSVP() {
     const options = new RequestOptions({ withCredentials: true });
     const url = `${environment.apiUrl}/${environment.rsvpUri}`;
     const body = {
@@ -130,13 +130,13 @@ export class RsvpComponent implements OnInit {
     });
   }
 
-  private editRSVP() {
+  editRSVP() {
     this.numAttending = 1;
     this.isAttending = undefined;
     this.isRsvpComplete = false;
   }
 
-  private showSearchForm() {
+  showSearchForm() {
     return this.isAuthorized && !this.isUpdatingRsvp;
   }
 
