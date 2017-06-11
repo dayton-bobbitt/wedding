@@ -19,7 +19,11 @@
               <span *ngIf="isAuthorized">You have already entered a valid event code.</span>
             </div>
             <div *ngIf="!isAuthorized" class="event-code-form">
-              <input #eventKey type="text" class="form-control" placeholder="Event code" (keyup.enter)="validateGuest(eventKey.value)">
+              <input #eventKey type="text" class="form-control" placeholder="Event code" (keyup.enter)="validateGuest(eventKey.value)" (keyup)="inputUpdated()">
+              <div *ngIf="isInvalidEventCode"
+                class="text--white">
+                <p>The event code you entered was invalid.</p>
+              </div>
               <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Continue</button>
               <button routerLink="/our-story" routerLinkActive="active" type="button" class="btn btn-danger">Continue without event code</button>
             </div>

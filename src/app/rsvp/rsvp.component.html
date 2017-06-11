@@ -5,7 +5,10 @@
         In order to see the details of our wedding and to RSVP, please enter the 
         event code found on your invitation.
       </p>
-      <input #eventKey type="text" class="form-control" placeholder="Please enter the event code on the details card" (keyup.enter)="validateGuest(eventKey.value)">
+      <input #eventKey type="text" class="form-control" placeholder="Please enter the event code on the details card" (keyup.enter)="validateGuest(eventKey.value)" (keyup)="inputUpdated()">
+      <div *ngIf="isInvalidEventCode">
+        <p>The event code you entered was invalid.</p>
+      </div>
       <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Submit</button>
     </div>
 

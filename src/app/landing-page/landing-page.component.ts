@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class LandingPageComponent implements OnInit {
   isAuthorized = false;
+  isInvalidEventCode = false;
 
   constructor(private http: Http, private router: Router) { }
 
@@ -20,6 +21,10 @@ export class LandingPageComponent implements OnInit {
     }, (err) => console.log('Guest not authorized'));
   }
 
+  inputUpdated() {
+    this.isInvalidEventCode = false;
+  }
+
   validateGuest(eventKey: string) {
     const headers = new Headers();
     headers.set('eventkey', eventKey);
@@ -27,7 +32,7 @@ export class LandingPageComponent implements OnInit {
     this.isGuestValid(headers).subscribe((res) => {
       this.router.navigateByUrl('/our-story');
     }, (err) => {
-      alert('Invalid event code')
+      this.isInvalidEventCode = true;
     });
   }
 

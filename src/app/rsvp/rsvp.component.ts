@@ -13,6 +13,7 @@ export class RsvpComponent implements OnInit {
   contactEmail: string;
   isAuthorized = false;
   isAttending: boolean;
+  isInvalidEventCode = false;
   numAttending = 1;
   invalidNumAttending = false;
   rsvpSearchInitiated = false;
@@ -31,12 +32,16 @@ export class RsvpComponent implements OnInit {
     this.getGuestRsvp();
   }
 
+  inputUpdated() {
+    this.isInvalidEventCode = false;
+  }
+
   validateGuest(eventKey: string) {
     const headers = new Headers();
     headers.set('eventkey', eventKey);
 
     this.getDetailsMessage(headers).subscribe((res) => {}, (err) => {
-      alert('Invalid event code');
+      this.isInvalidEventCode = true;
     });
   }
 
