@@ -58,9 +58,17 @@ header.main {
 
         img {
             width: 100%;
-            height: 50vh;
+            height: 80vh;
             @include cover;
             object-position: center 80%;
+
+            &.travel-info {
+                object-position: 20% center;
+            }
+
+            &.rsvp {
+                object-position: center 30%;
+            }
 
             @media all and (min-width: $medium), (orientation: landscape) {
                 object-position: center 55%;
