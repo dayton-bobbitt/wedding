@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'base-page',
@@ -7,8 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BasePageComponent implements OnInit {
   @Input() title: string;
+  private route: string;
 
-  constructor() { }
+  constructor(private router: Router) {
+    const url = this.router.url;
+    this.route = url.substring(1);
+  }
 
   ngOnInit() {
   }
