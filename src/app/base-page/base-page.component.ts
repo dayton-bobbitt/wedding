@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class BasePageComponent implements OnInit {
   @Input() title: string;
-  private route: string;
+  route: string;
 
   constructor(private router: Router) {
     const url = this.router.url;
