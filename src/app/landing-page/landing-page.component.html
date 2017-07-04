@@ -25,7 +25,7 @@
                 <p>The event code you entered was invalid.</p>
               </div>
               <button type="button" class="btn btn-success" (click)="validateGuest(eventKey.value)">Continue</button>
-              <button routerLink="/our-story" routerLinkActive="active" type="button" class="btn btn-danger">Continue without event code</button>
+              <button routerLink="/our-story" routerLinkActive="active" type="button" class="btn btn-danger" (click)="scrollTop()">Continue without event code</button>
             </div>
             <div *ngIf="isAuthorized" class="event-code-form">
               <button type="button" class="btn btn-success" (click)="validateGuest()">Continue</button>

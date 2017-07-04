@@ -31,9 +31,14 @@ export class LandingPageComponent implements OnInit {
 
     this.isGuestValid(headers).subscribe((res) => {
       this.router.navigateByUrl('/our-story');
+      this.scrollTop();
     }, (err) => {
       this.isInvalidEventCode = true;
     });
+  }
+
+  scrollTop() {
+    window.scrollTo(0,0);
   }
 
   isGuestValid(headers?: Headers): Observable<any> {
